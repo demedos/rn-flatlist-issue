@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
   FlatList,
+  Image,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -44,9 +45,20 @@ const App = () => {
           renderItem={info => {
             return (
               <View style={[styles.container, {width, height}]}>
-                <Text>Page</Text>
-                <Text style={styles.text}>{info.index + 1}</Text>
-                <Text>{`width: ${width}, height: ${height}`}</Text>
+                <Image
+                  source={{
+                    uri: 'https://images.unsplash.com/photo-1657299143228-f971e4887268?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3467&q=80',
+                  }}
+                  style={{
+                    width,
+                    height,
+                  }}
+                />
+                <View style={styles.info}>
+                  <Text>Page</Text>
+                  <Text style={styles.text}>{info.index + 1}</Text>
+                  <Text>{`width: ${width}, height: ${height}`}</Text>
+                </View>
               </View>
             );
           }}
@@ -60,10 +72,12 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: 'red',
-    borderWidth: 3,
     alignItems: 'center',
-    paddingTop: 12,
+  },
+  info: {
+    position: 'absolute',
+    alignItems: 'center',
+    marginTop: 32,
   },
   text: {
     fontSize: 72,
